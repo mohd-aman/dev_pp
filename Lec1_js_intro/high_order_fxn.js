@@ -1,3 +1,8 @@
+
+ 
+// High Order Functions => Functions which accept functions as a argument !
+// Callback Functions => Functions which are passed into a function as a argument !
+
 function getFirstName(fullName){
     fullName = fullName.split(" ");
     return fullName[0];
