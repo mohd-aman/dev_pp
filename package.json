@@ -1,0 +1,23 @@
+{
+  "name": "Dev_PP",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohd-aman/dev_pp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohd-aman/dev_pp/issues"
+  },
+  "homepage": "https://github.com/mohd-aman/dev_pp#readme",
+  "description": "",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.5"
+  }
+}
