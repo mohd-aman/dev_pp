@@ -1,5 +1,6 @@
 const request = require("request");
 const cheerio = require("cheerio");
+const getAllRepos = require("./allRepos");
 
 request("https://github.com/topics",cb);
 
@@ -13,7 +14,8 @@ function parseData(html){
     let completeLinks = [];
     for(let i=0;i<aTags.length;i++){
         completeLink = "https://github.com"+aTags[i+""]["attribs"]["href"];
+        getAllRepos(completeLink,aTags[i+""]["attribs"]["href"].split("/topics/")[1]);
         completeLinks.push(completeLink);
     }
-    console.log(completeLinks)
+    console.log(completeLinks);
 }
