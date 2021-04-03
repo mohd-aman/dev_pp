@@ -33,9 +33,9 @@ let challenges = require("./challenges");
     createChallengeLink = 'https://www.hackerrank.com'+createChallengeLink;
 
     // simultaenously open tabs for all the challenges
-    // for(let i=0 ; i<challenges.length ; i++){
-    //     addChallenge(challenges[i] , browser , createChallengeLink );
-    // }
+    for(let i=0 ; i<challenges.length ; i++){
+        await addChallenge(challenges[i] , browser , createChallengeLink );
+    }
     
     // OR
 
@@ -46,19 +46,24 @@ let challenges = require("./challenges");
     // }
 
 
-    await addChallenge(challenges[0] , browser , createChallengeLink);
+    // await addChallenge(challenges[0] , browser , createChallengeLink);
 })();   
 
 
 
 // by default returns a pending promise
 async function addChallenge(challenge , browser , createChallengeLink ){
-
-    // {
-        // 
-    // }
     let newTab = await browser.newPage();
-    newTab.goto(createChallengeLink);
-
+    await newTab.goto(createChallengeLink);
+    await newTab.waitForSelector('#name' , {visible:true});
+    await newTab.type('#name',challenge["Challenge Name"]);
+    await newTab.type('#preview' , challenge["Description"]);
+    await newTab.type('#problem_statement-container .CodeMirror textarea' , challenge["Problem Statement"] );
+    await newTab.type('#input_format-container .CodeMirror textarea' , challenge["Input Format"]);
+    await newTab.type('#constraints-container .CodeMirror textarea' , challenge["Constraints"]);
+    await newTab.type('#output_format-container .CodeMirror textarea' , challenge["Output Format"]);
+    await newTab.type('#tags_tag' , challenge["Tags"]);
+    await newTab.keyboard.press("Enter");
+    await newTab.click('.save-challenge.btn.btn-green');
     newTab.close();
 }
